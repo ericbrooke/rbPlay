@@ -26,8 +26,8 @@ class Guide
     intro
     result = nil
     until result == :quit 
-      action = get_action
-      result = do_action(action)
+      action, args = get_action #an array
+      result = do_action(action, args)
     end
     farewell
   end
@@ -38,17 +38,19 @@ class Guide
       puts "Actions: " + Guide::Config.actions.join(", ") if action
       print "> "
       user_response = gets.chomp
-      action = user_response.downcase.strip
+      args = user_response.downcase.strip.split(' ')
+      action = args.shift #first word taken
     end
-    return action
+    return action, args #an array
   end
 
-  def do_action(action)
+  def do_action(action, args=[])
     case action
     when 'list'
       list
     when 'find'
-      puts "Finding..."
+      keyword = args.shift #second word taken, anymore will be ignored
+      find(keyword)
     when 'add'
       add
     when 'quit'
@@ -58,7 +60,7 @@ class Guide
   end
 
   def add
-    output_action_header("Add a restaurant")
+    output_action_header("Add a restaurant" )
 
     restaurant = Restaurant.build_using_questions
 
@@ -73,6 +75,24 @@ class Guide
       output_action_header("Restaurants")
       restaurants = Restaurant.saved_restaurants
       output_restaurant_table(restaurants)
+  end
+
+  def find(keyword="")
+    output_action_header("Find a Restuarant")
+    if keyword
+      restaurants = Restaurant.saved_restaurants
+      found = restaurants.select do |rest|
+        rest.name.downcase.include?(keyword.downcase) ||
+        rest.cuisine.downcase.include?(keyword.downcase) ||
+        rest.price.to_i <= keyword.to_i
+      end
+      output_restaurant_table(found)
+    else
+      puts "Find using a key phrase to search restaurants"
+      puts "Examples: 'find chinese', 'find flying pig'\n\n"
+    end
+
+
   end
 
   def intro
