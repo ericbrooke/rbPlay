@@ -1,3 +1,5 @@
 Flying Pig	Canadian	30
 Revel	Snack	20
 guilt and co	fancy food	20
+Espana	Spanish	30
+Thai Basil	Thai	15
