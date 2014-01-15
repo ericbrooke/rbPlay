@@ -4,7 +4,7 @@ class Guide
 
   def initialize(path=nil)
     Restaurant.filepath = path
-    if Restaurant.file_exists?
+    if Restaurant.file_usable?
       puts "Found the Restaurant file"
     elsif Restaurant.create_file
       puts "No Restaurant file found, creating a new one"
