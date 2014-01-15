@@ -16,11 +16,27 @@ class Guide
 
   def launch
     intro
-    #action loop
-    #what do you want to do
-    #do that action
-    # repat untils user quits
+    result = nil
+    until result == :quit 
+      print "> "
+      user_response = gets.chomp
+      result = do_action(user_response)
+    end
     farewell
+  end
+
+  def do_action(action)
+    case action
+    when 'list'
+      puts "Listing.."
+    when 'find'
+      puts "Finding..."
+    when 'add'
+      puts 'Adding...'
+    when 'quit'
+      return :quit
+    else "\nPlease put one of the following commands: list, find, add or quit.\n"
+    end
   end
 
   def intro
