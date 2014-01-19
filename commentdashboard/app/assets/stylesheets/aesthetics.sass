@@ -1,0 +1,122 @@
+//Mixins (Borders)
+@mixin border-radius($radius)
+  border-radius: $radius
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+
+//Typography
+$serif: "Elena", "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif
+$sans: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+//Colors, Sizes, Font Declarations, Borders
+body
+  background-color: $bg
+  color: $text
+  font: 18px $serif
+  line-height: 28px
+
+h1
+  font-family: $sans
+  font-weight: normal
+  font-size: 1em
+  line-height: 1.25em
+
+h2
+  font-family: $serif
+  font-weight: normal
+  font-style: italic
+  font-size: 1em
+  line-height: 1.25em
+
+  a
+    font-family: $sans
+    font-style: normal
+    font-size: 0.9em
+
+h3
+  font-family: $serif
+  font-weight: 600
+  text-transform: uppercase
+  font-size: 0.9em
+  line-height: 1.5em
+  letter-spacing: 1px
+  color: $orange
+
+h4
+  font-family: $serif
+  font-weight: 100
+  font-size: 0.9em
+  font-style: italic
+  line-height: 1.5em
+
+p
+  font: 1em
+  line-height: 1.5em
+
+form
+  input
+    border: 1px solid $bg-dim
+    @include border-radius(7px)
+    font-size: 0.75em
+    font-family: $sans
+    font-weight: normal
+    line-height: 1.5em
+    color: $text-dim
+
+a:link
+  text-decoration: none
+  color: black
+  border-bottom: 1px solid $pop
+
+a:visited
+  color: $text
+  border-bottom: 1px dotted $text-dim
+
+a:hover
+  color: $text-dim
+  border-bottom: 1px solid $text-dim
+
+a:active
+  color: black
+
+header
+  background-color: $masthead
+  border-bottom: 1px solid darken($masthead, 30%)
+  color: $mastheadtext
+
+  a:visited
+    color: $text
+  a:hover
+    color: black
+
+  nav
+    font-size: 0.9em
+    line-height: 1.5em
+
+    a
+      margin-right: 0.4em
+
+.comments, .start
+  form
+    input
+      font-size: 1em
+      color: $pop
+      background-color: white
+    input[type="submit"]
+      background-color: $pop-dim
+      border-color: $pop
+      color: white
+      @include border-radius(1em)
+      padding: 0.1em 1em
+      &:hover
+        opacity: 0.75
+  .comment
+    p.commenter, p.time
+      font-size: 0.9em
+      color: $meta
+    p.commenter
+      background: url('icon-user.png') top left no-repeat
+      background-size: 1em 1em
+      padding-left: 1.4em
+  blockquote
+    border-left: 1px solid $meta
