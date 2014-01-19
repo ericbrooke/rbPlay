@@ -26,7 +26,20 @@ describe "Home Page" do
 	        expect(page).to have_selector 'h2', text:"Read comments from your favourite blogs."
 	      end
 	    end
+	  end
+
+	  context "populated database" do
+
+      before(:each) do
+        visit "/"
+      end
+
+      it "show a list of blogs" do
+      	pending "Need to write unit tests and blog model first"
+      	expect(page).to have_selector "li a", text:'Mashable'
+      end
 
     end
+
   end
 end
