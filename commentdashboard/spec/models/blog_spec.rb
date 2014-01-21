@@ -18,4 +18,12 @@ describe Blog do
     end
   end
 	
+	describe "permalink" do
+
+		it "builds from title" do
+      blog.build_permalink
+      expect(blog.permalink).to eq 'my-blog'
+		end
+  end
+
 end
