@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'nokogiri', '1.5.4'
 
 group :development, :test do
+  gem "annotate"
   gem "rb-fsevent"
   gem "guard", "~> 2.2.4"
   gem "guard-rspec"
