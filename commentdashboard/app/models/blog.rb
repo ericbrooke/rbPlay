@@ -28,7 +28,7 @@ class Blog < ActiveRecord::Base
 		def create_from_wordpress_client_attributes comment_data
 		  comment_data.map do |a_comment|
 		  	attributes = a_comment.dup
-		  	attributes[opined_at]  = attributes.delete(:date)
+		  	attributes[:opined_at]  = attributes.delete(:date)
 		  	comment = new(attributes)
 		  	if comment.save!
 		  		comment

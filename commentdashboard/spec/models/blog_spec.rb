@@ -40,6 +40,7 @@ describe Blog do
   describe "refresh comments" do
 
   	it "populates comments" do
+  		stub_network
   		blog.save!
   		blog.comments.refresh
   		expect(blog.comments.length).to eq 30
