@@ -6,6 +6,8 @@ CommentDashboard::Application.routes.draw do
   
   root to: 'blogs#index'
 
+  resources :blogs
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

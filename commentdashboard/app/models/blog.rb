@@ -17,6 +17,8 @@ class Blog < ActiveRecord::Base
 	
 	before_validation :build_permalink, on: :create
 
+	scope :recent, -> { order(:created_at).reverse_order.limit(12)}
+
 	has_many :comments do 
 		
 		def refresh
