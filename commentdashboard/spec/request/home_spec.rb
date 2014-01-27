@@ -38,7 +38,7 @@ describe "Home Page" do
 
       it "show a list of blogs" do
       	#pending "Need to write unit tests and blog model first"
-
+      	#save_and_open_page
       	expect(page).to have_selector "li a", text:'Mashable'
       end
 
