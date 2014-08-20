@@ -1,4 +1,10 @@
 class Thing
+
+  def initialize(aName, aDescription)
+    @name = aName
+    @description = aDescription
+  end
+
     def set_name (aName)
       @name = aName
     end
@@ -18,30 +24,54 @@ end
 
 class Treasure < Thing
     def initialize(aName, aDescription, aValue)
-      super( aName, aDeescription)
-      @value = value
+      super(aName, aDescription)
+      @value = aValue
     end
 
     def get_value
       @value
     end
 
-    def set_value
-      @value
+    def set_value(aValue)
+      @value = aValue
+    end
 
     def to_s
      "The #{@name} Treasure is #{@description}\n"
     end
 end
 
-thing = Thing.new
-thing.set_name("A lovely Thing")
+class Monster < Thing
+  def initialize(aName, aDescription, aStrength)
+    super(aName, aDescription)
+    @strength = aStrength
+  end
+
+  def get_strength
+    @strength
+  end
+
+  def set_strength(aStrength)
+    @strength = aStrength
+  end
+
+  def to_s
+   "The #{@name} Monster is #{@description}\n"
+  end
+end
+
+
+thing = Thing.new("test", "description")
 puts thing.get_name
 
-t1 = Treasure.new("Sword", "an elvish weapon")
-t2 = Treasure.new("Shield", "a dwarven shield")
+t1 = Treasure.new("Sword", "an elvish weapon", 90)
+t2 = Treasure.new("Shield", "a dwarven shield", 100)
 
 puts t1.to_s
 puts t2.to_s
 
-puts "Inspecting 1st treasure: #{t1.inspect}"
+m1 = Monster.new("Goblin", "A childlike green ugly thing", 2)
+m2 = Monster.new("Kobold", "A small creature, with head of a dog", 3)
+
+puts m1.to_s
+puts m2.to_s
