@@ -8,9 +8,8 @@ def repeated_task(first_date, recurrences)
   dates = []
   dates << first_date
 
-  last_date = first_date
   1.upto(recurrences.to_i) do |i|
-    dates << last_date.next_month(i)
+    dates << first_date.next_month(i)
   end
   dates
 end
